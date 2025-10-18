@@ -1,0 +1,41 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+/**
+ * @title Counter
+ * @dev A simple smart contract that allows incrementing and decrementing a count.
+ */
+contract Counter {
+    /**
+     * @dev The state variable 'count' is stored on the blockchain.
+     * The 'public' keyword automatically creates a getter function for it.
+     */
+    uint256 public count;
+
+    /**
+     * @dev Increases the value of 'count' by 1.
+     * This is a state-changing function and requires a transaction (and gas).
+     */
+    function increment() public {
+        count += 1;
+    }
+
+    /**
+     * @dev Decreases the value of 'count' by 1.
+     * This will revert the transaction if 'count' is 0, preventing an underflow error,
+     * because 'uint256' cannot be negative.
+     */
+    function decrement() public {
+        count -= 1;
+    }
+
+    /**
+     * @dev A view function to get the current value of the count.
+     * Calling this function is free as it does not modify the state.
+     * Note: A public getter is already created for 'count', but this is
+     * included for explicit demonstration.
+     */
+    function get() public view returns (uint256) {
+        return count;
+    }
+}
